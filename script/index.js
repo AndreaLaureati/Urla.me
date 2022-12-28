@@ -16,10 +16,11 @@ $(document).ready(function () {
                 url: url
             },
             success: function (data) {
-                if (data.status == 'success') {
-                    $('.errors').html('Your shortened URL is: <a href="' + data.shortened_url + '">' + data.shortened_url + '</a>');
+                var response = JSON.parse(data);
+                if (response.status == 'success') {
+                    $('.errors').html('Your shortened URL is: <a target="_blank" href="' + response.shortened_url + '">' + response.shortened_url + '</a>');
                 } else {
-                    $('.errors').html('<a href="' + data + '" target="_blank">' + data + '</a>');
+                    $('.errors').html('Qualcosa è andato storto. Riprova più tardi. Errore: ' + response.message);
                 }
             }
         });
