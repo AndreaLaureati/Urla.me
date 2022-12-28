@@ -1,8 +1,11 @@
 <?php
 require_once(__DIR__ . "/includes/functions.php");
+require_once(__DIR__ . "/lib/Database.php");
+$db = new Database();
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $url = getUrlLocation($id);
+    $url = getUrlLocation($db, $id);
+    updateVisits($db, $id);
     header("Location: https://" . $url);
 }
 ?>

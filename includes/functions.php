@@ -73,3 +73,18 @@ function getUrlLocation($db, $id)
         exit;
     }
 }
+
+function updateVisits($db, $id)
+{
+    try {
+        $query = $db->prepare("UPDATE url SET times_visited = times_visited + 1 WHERE id = :id");
+        $query->execute([':id' => $id]);
+        return $query->rowCount() > 0 ? true : false;
+    } catch (PDOException $e) {
+        echo json_encode([
+            'status' => 'error',
+            'message' => $e->getMessage()
+        ]);
+        exit;
+    }
+}
