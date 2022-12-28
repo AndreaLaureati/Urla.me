@@ -5,7 +5,6 @@ if (isset($_GET['id'])) {
     $url = getUrlLocation($id);
     header("Location: https://" . $url);
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -24,35 +23,7 @@ if (isset($_GET['id'])) {
     <button type="submit">Shorten !</button>
     <p class="errors"></p>
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('button[type="submit"]').click(function(e) {
-                e.preventDefault();
-                $('.errors').html('');
-
-                var url = $('input[name="url"]').val();
-                if (url.length == 0) {
-                    $('.errors').html('Please enter a URL');
-                    return false;
-                }
-
-                $.ajax({
-                    url: 'includes/shorten.php',
-                    type: 'POST',
-                    data: {
-                        url: url
-                    },
-                    success: function(data) {
-                        if (data.status == 'success') {
-                            $('.errors').html('Your shortened URL is: <a href="' + data.shortened_url + '">' + data.shortened_url + '</a>');
-                        } else {
-                            $('.errors').html('<a href="' + data + '" target="_blank">' + data + '</a>');
-                        }
-                    }
-                });
-            });
-        });
-    </script>
+    <script type="text/javascript" src="script/index.js"></script>
 </body>
 
 </html>
