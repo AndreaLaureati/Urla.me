@@ -1,11 +1,4 @@
-Realizzare la pagina shorten.php sotto forma di API, che risponda con uno standard JSON.
-
 Modificare il meccanismo di generazione automatica dell'ID, sostituendolo con un autoincrement su DB e con un campo chiave che venga generato secondo un encode.
-
-Migliorare la connessione al DB, creando una classe apposita.
-
-Fare una gestione degli errori.
-
 
 SVILUPPI FUTURI : 
 

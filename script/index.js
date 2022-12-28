@@ -10,7 +10,7 @@ $(document).ready(function () {
         }
 
         $.ajax({
-            url: 'includes/shorten.php',
+            url: 'php/shorten.php',
             type: 'POST',
             data: {
                 url: url

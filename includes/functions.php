@@ -1,8 +1,7 @@
 <?php
-function idExists($id)
+function idExists($db, $id)
 {
     try {
-        $db = new PDO('mysql:host=localhost;dbname=urlame', 'root', 'masterkey');
         $query = $db->prepare("SELECT id FROM url WHERE id = :id");
         $query->execute([':id' => $id]);
         return $query->rowCount() > 0 ? true : false;
@@ -15,10 +14,9 @@ function idExists($id)
     }
 }
 
-function getUrlId($url)
+function getUrlId($db, $url)
 {
     try {
-        $db = new PDO('mysql:host=localhost;dbname=urlame', 'root', 'masterkey');
         $query = $db->prepare("SELECT id FROM url WHERE url = :url");
         $query->execute([':url' => $url]);
         return $query->rowCount() > 0 ? $query->fetch(PDO::FETCH_ASSOC)['id'] : false;
@@ -31,10 +29,9 @@ function getUrlId($url)
     }
 }
 
-function insertId($id, $url)
+function insertId($db, $id, $url)
 {
     try {
-        $db = new PDO('mysql:host=localhost;dbname=urlame', 'root', 'masterkey');
         $query = $db->prepare("INSERT INTO url (id, url) VALUES (:id, :url)");
         $query->execute([':id' => $id, ':url' => $url]);
         return $query->rowCount() > 0 ? true : false;
@@ -47,10 +44,9 @@ function insertId($id, $url)
     }
 }
 
-function urlHasBeenShortened($url)
+function urlHasBeenShortened($db, $url)
 {
     try {
-        $db = new PDO('mysql:host=localhost;dbname=urlame', 'root', 'masterkey');
         $query = $db->prepare("SELECT id FROM url WHERE url = :url");
         $query->execute([':url' => $url]);
         return $query->rowCount() > 0 ? true : false;
@@ -63,10 +59,9 @@ function urlHasBeenShortened($url)
     }
 }
 
-function getUrlLocation($id)
+function getUrlLocation($db, $id)
 {
     try {
-        $db = new PDO('mysql:host=localhost;dbname=urlame', 'root', 'masterkey');
         $query = $db->prepare("SELECT url FROM url WHERE id = :id");
         $query->execute([':id' => $id]);
         return $query->rowCount() > 0 ? $query->fetch(PDO::FETCH_ASSOC)['url'] : false;
