@@ -92,6 +92,37 @@ function getUrlLocation($db, $id)
     }
 }
 
+function getTimesVisited($db, $url)
+{
+    try {
+        $query = $db->prepare("SELECT times_visited FROM url WHERE url = :url");
+        $query->execute([':url' => $url]);
+        return $query->rowCount() > 0 ? $query->fetch(PDO::FETCH_ASSOC)['times_visited'] : false;
+    } catch (PDOException $e) {
+        echo json_encode([
+            'status' => 'error',
+            'message' => $e->getMessage()
+        ]);
+        exit;
+    }
+}
+
+
+function getTimesShortened($db, $url)
+{
+    try {
+        $query = $db->prepare("SELECT times_shortened FROM url WHERE url = :url");
+        $query->execute([':url' => $url]);
+        return $query->rowCount() > 0 ? $query->fetch(PDO::FETCH_ASSOC)['times_shortened'] : false;
+    } catch (PDOException $e) {
+        echo json_encode([
+            'status' => 'error',
+            'message' => $e->getMessage()
+        ]);
+        exit;
+    }
+}
+
 function updateVisits($db, $id)
 {
     $id = decode($id);

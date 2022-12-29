@@ -18,7 +18,10 @@ if (urlHasBeenShortened($db, $url)) {
     updateTimesShortened($db, $url);
     echo json_encode([
         'status' => 'success',
-        'shortened_url' => "http://localhost/urla.me/?id=" . getUrlEncodedId($db, $url)
+        'original_url' => $url,
+        'shortened_url' => "http://localhost/urla.me/?id=" . getUrlEncodedId($db, $url),
+        'times_shortened' => getTimesShortened($db, $url),
+        'times_visited' => getTimesVisited($db, $url)
     ]);
     exit;
 }
@@ -27,5 +30,8 @@ insertUrl($db, $url);
 
 echo json_encode([
     'status' => 'success',
-    'shortened_url' => "http://localhost/urla.me/?id=" . getUrlEncodedId($db, $url)
+    'original_url' => $url,
+    'shortened_url' => "http://localhost/urla.me/?id=" . getUrlEncodedId($db, $url),
+    'times_shortened' => getTimesShortened($db, $url),
+    'times_visited' => getTimesVisited($db, $url)
 ]);
