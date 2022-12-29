@@ -2,7 +2,6 @@
 require_once(__DIR__ . "/../includes/functions.php");
 require_once(__DIR__ . "/../lib/Database.php");
 
-$id = rand(100000, 999999);
 $url = $_POST['url'];
 
 try {
@@ -15,21 +14,17 @@ try {
     exit;
 }
 
-while (idExists($db, $id)) {
-    $id = rand(100000, 999999);
-}
-
 if (urlHasBeenShortened($db, $url)) {
     echo json_encode([
         'status' => 'success',
-        'shortened_url' => "http://localhost/urla.me/index.php?id=" . getUrlId($db, $url)
+        'shortened_url' => "http://localhost/urla.me/index.php?id=" . getUrlEncodedId($db, $url)
     ]);
     exit;
 }
 
-insertId($db, $id, $url);
+insertUrl($db, $url);
 
 echo json_encode([
     'status' => 'success',
-    'shortened_url' => "http://localhost/urla.me/index.php?id=" . getUrlId($db, $url)
+    'shortened_url' => "http://localhost/urla.me/index.php?id=" . getUrlEncodedId($db, $url)
 ]);
