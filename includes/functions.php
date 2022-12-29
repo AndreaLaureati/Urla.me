@@ -61,6 +61,21 @@ function urlHasBeenShortened($db, $url)
     }
 }
 
+function updateTimesShortened($db, $url)
+{
+    try {
+        $query = $db->prepare("UPDATE url SET times_shortened = times_shortened + 1 WHERE url = :url");
+        $query->execute([':url' => $url]);
+        return $query->rowCount() > 0 ? true : false;
+    } catch (PDOException $e) {
+        echo json_encode([
+            'status' => 'error',
+            'message' => $e->getMessage()
+        ]);
+        exit;
+    }
+}
+
 function getUrlLocation($db, $id)
 {
     $id = decode($id);

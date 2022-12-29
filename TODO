@@ -1,5 +1,3 @@
-Modificare il meccanismo di generazione automatica dell'ID, sostituendolo con un autoincrement su DB e con un campo chiave che venga generato secondo un encode.
-
 SVILUPPI FUTURI : 
 
 Creare un frontend per la pagina.
