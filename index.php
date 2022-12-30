@@ -42,6 +42,16 @@ if (isset($_GET['id'])) {
         <p class="result"></p>
         <p class="stats"></p>
     </div>
+    <div class="history-container" hidden>
+        <h3 class="history-title">Recent history</h3>
+        <table class="history-table">
+            <tr>
+                <th>Created at</th>
+                <th>Original Url</th>
+                <th>Short Url</th>
+            </tr>
+        </table>
+    </div>
     <script type="text/javascript" src="script/index.js"></script>
 </body>
 
