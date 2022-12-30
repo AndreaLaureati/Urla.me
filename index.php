@@ -6,7 +6,11 @@ if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $url = getUrlLocation($db, $id);
     updateVisits($db, $id);
-    header("Location:" . $url);
+    if (startsWithHttp($url)) {
+        header("Location: " . $url);
+    } else {
+        header("Location: http://" . $url);
+    }
 }
 ?>
 

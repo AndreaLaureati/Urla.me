@@ -149,3 +149,12 @@ function decode($base64)
     $number = unpack('i', base64_decode(str_pad(strtr($base64, '-_', '+/'), strlen($base64) % 4, '=')));
     return $number[1];
 }
+
+function startsWithHttp($url)
+{
+    if (substr($url, 0, 7) == "http://" || substr($url, 0, 8) == "https://") {
+        return true;
+    } else {
+        return false;
+    }
+}
