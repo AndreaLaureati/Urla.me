@@ -5,7 +5,7 @@ $db = new Database();
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
     $url = getUrlLocation($db, $id);
-    updateVisits($db, $id);
+    updateTimesVisited($db, $id);
     if (startsWithHttp($url)) {
         header("Location: " . $url);
     } else {

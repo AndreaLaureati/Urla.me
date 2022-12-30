@@ -1,4 +1,11 @@
 <?php
+
+/**
+ * @param db Database connection
+ * @param id Id of the url
+ * 
+ * @return bool true if the id exists, false if it doesn't
+ */
 function idExists($db, $id)
 {
     try {
@@ -14,6 +21,12 @@ function idExists($db, $id)
     }
 }
 
+/**
+ * @param db Database connection
+ * @param url Url to check
+ * 
+ * @return bool true if the id has been found, false if it hasn't
+ */
 function getUrlEncodedId($db, $url)
 {
     try {
@@ -29,6 +42,12 @@ function getUrlEncodedId($db, $url)
     }
 }
 
+/**
+ * @param db Database connection
+ * @param url Url to insert
+ * 
+ * @return bool true if the url has been inserted, false if it hasn't
+ */
 function insertUrl($db, $url)
 {
     try {
@@ -46,6 +65,12 @@ function insertUrl($db, $url)
     }
 }
 
+/**
+ * @param db Database connection
+ * @param url Url to check
+ * 
+ * @return bool true if the url has been shortened, false if it hasn't
+ */
 function urlHasBeenShortened($db, $url)
 {
     try {
@@ -61,6 +86,12 @@ function urlHasBeenShortened($db, $url)
     }
 }
 
+/**
+ * @param db Database connection
+ * @param url Url to update
+ * 
+ * @return bool true if the url has been updated, false if it hasn't
+ */
 function updateTimesShortened($db, $url)
 {
     try {
@@ -76,6 +107,12 @@ function updateTimesShortened($db, $url)
     }
 }
 
+/**
+ * @param db Database connection
+ * @param id Id of the url
+ * 
+ * @return string url if the url has been found, bool false if it hasn't
+ */
 function getUrlLocation($db, $id)
 {
     $id = decode($id);
@@ -92,6 +129,12 @@ function getUrlLocation($db, $id)
     }
 }
 
+/**
+ * @param db Database connection
+ * @param url Url to check
+ * 
+ * @return int times visited if the url has been found, bool false if it hasn't
+ */
 function getTimesVisited($db, $url)
 {
     try {
@@ -107,7 +150,12 @@ function getTimesVisited($db, $url)
     }
 }
 
-
+/**
+ * @param db Database connection
+ * @param url Url to check
+ * 
+ * @return int times shortened if the url has been found, bool false if it hasn't
+ */
 function getTimesShortened($db, $url)
 {
     try {
@@ -123,7 +171,13 @@ function getTimesShortened($db, $url)
     }
 }
 
-function updateVisits($db, $id)
+/**
+ * @param db Database connection
+ * @param id Id of the url
+ * 
+ * @return bool true if the times visited has been updated, false if it hasn't
+ */
+function updateTimesVisited($db, $id)
 {
     $id = decode($id);
     try {
@@ -139,17 +193,32 @@ function updateVisits($db, $id)
     }
 }
 
+/**
+ * @param number the id of the url to encode
+ * 
+ * @return string encoded id
+ */
 function encode($number)
 {
     return strtr(rtrim(base64_encode(pack('i', $number)), '='), '+/', '-_');
 }
 
-function decode($base64)
+/**
+ * @param encoded the encoded id to decode
+ * 
+ * @return int decoded id
+ */
+function decode($encoded)
 {
-    $number = unpack('i', base64_decode(str_pad(strtr($base64, '-_', '+/'), strlen($base64) % 4, '=')));
+    $number = unpack('i', base64_decode(str_pad(strtr($encoded, '-_', '+/'), strlen($encoded) % 4, '=')));
     return $number[1];
 }
 
+/**
+ * @param url Url to check
+ * 
+ * @return bool true if the url starts with http:// or https://, false if it doesn't
+ */
 function startsWithHttp($url)
 {
     if (substr($url, 0, 7) == "http://" || substr($url, 0, 8) == "https://") {
