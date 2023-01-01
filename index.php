@@ -30,15 +30,18 @@ if (isset($_GET['id'])) {
 <body>
     <div class="topbar">
         <h1 class="title">Urla.me</h1>
-        <h3 class="subtitle">Your free URL shortener</h3>
+        <h3 class="subtitle">Free URL shortener</h3>
     </div>
     <div class="content-wrapper">
         <div class="url-input-container">
+            <div class="url-text-1">Type the URL to be shortened</div>
             <input type="text" class="url-input" name="url">
+            <div class="submit-button-container">
+                <button type="submit" class="submit-button">Shorten !</button>
+            </div>
         </div>
-        <div class="submit-button-container">
-            <button type="submit" class="submit-button">Shorten !</button>
-        </div>
+    </div>
+    <div class="messages" hidden>
         <p class="errors"></p>
         <p class="result"></p>
         <p class="stats"></p>

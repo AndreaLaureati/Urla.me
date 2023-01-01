@@ -1,9 +1,6 @@
 $(document).ready(function () {
     $('button[type="submit"]').click(function (e) {
         e.preventDefault();
-        $('.errors').html('');
-        $('.result').html('');
-        $('.stats').html('');
 
         var url = $('input[name="url"]').val();
         // if (invalidUrl(url) && invalidIpAddress(url)) {
@@ -20,11 +17,15 @@ $(document).ready(function () {
             success: function (data) {
                 var response = JSON.parse(data);
                 if (response.status == 'success') {
+                    $('.errors').html('');
+                    $('.messages').show();
                     $('.history-container').show();
                     $('.result').html('Your shortened URL is: <a target="_blank" href="' + response.shortened_url + '" class="shortened-url-link">' + response.shortened_url + '</a>');
                     $('.stats').html('This URL has been shortened ' + response.times_shortened + ' times using Urla.me');
                     $('.history-table').append('<tr><td>' + getCurrentTime() + '</td><td>' + '<a target="_blank" class="original-url-link" href="' + response.original_url + '">' + response.original_url + '</a></td > <td><a target="_blank" class="shortened-url-link" href="' + response.shortened_url + '">' + response.shortened_url + '</a></td></tr > ');
                 } else {
+                    $('.result').html('');
+                    $('.stats').html('');
                     $('.errors').html('Qualcosa è andato storto. Riprova più tardi. Errore: ' + response.message);
                 }
             }

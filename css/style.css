@@ -22,7 +22,29 @@ body {
 }
 
 .content-wrapper {
+    display: flex;
     text-align: center;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.url-input-container {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    width: 40%;
+    box-shadow: 0px 0px 8px 3px rgba(255, 255, 255, 0.25);
+
+}
+
+.url-text-1 {
+    font-family: 'Poppins', sans-serif;
+    color: rgb(49, 49, 49);
+    font-size: 25px;
+    font-weight: 600;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    padding: 5px;
 }
 
 .url-input {
@@ -31,7 +53,7 @@ body {
     text-align: center;
     background: white;
     height: 40px;
-    width: 500px;
+    width: 80%;
     border-radius: 15px;
     border-color: transparent;
 }
@@ -51,6 +73,7 @@ input[type="text"]:focus {
     border-color: transparent;
     background-color: rgb(236, 224, 46);
     margin-top: 0px;
+    margin-bottom: 0px;
     outline: none;
 }
 
@@ -75,9 +98,9 @@ input[type="text"]:focus {
 
 .stats {
     font-family: 'Poppins', sans-serif;
-    color: silver;
+    color: rgb(39, 39, 39);
     font-size: 16px;
-    font-weight: 400;
+    font-weight: 500;
     margin-top: 10px;
 }
 
@@ -111,8 +134,13 @@ input[type="text"]:focus {
 }
 
 .history-container {
-    margin-top: 100px;
-    margin-left: 100px;
+    justify-content: center;
+    text-align: center;
+    width: 50%;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+
 }
 
 .history-title {
@@ -129,6 +157,8 @@ input[type="text"]:focus {
     color: white;
     font-size: 12px;
     margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .clear-history-button {
@@ -138,4 +168,17 @@ input[type="text"]:focus {
     outline: none;
     font-size: 20px;
     cursor: pointer;
+}
+
+.messages {
+    padding: 10px 10px 10px 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    text-align: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px 3px rgba(255, 255, 255, 0.25);
+    width: 41%;
 }
