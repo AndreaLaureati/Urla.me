@@ -46,3 +46,8 @@ function getCurrentTime() {
     var date = new Date();
     return date.getHours() + ":" + date.getMinutes();
 }
+
+function clearHistory() {
+    $('.history-table').html('');
+    $('.history-container').hide();
+}

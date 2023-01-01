@@ -23,6 +23,7 @@ if (isset($_GET['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/e4e0469f3b.js" crossorigin="anonymous"></script>
     <title>Urla.me URL Shortener</title>
 </head>
 
@@ -43,7 +44,7 @@ if (isset($_GET['id'])) {
         <p class="stats"></p>
     </div>
     <div class="history-container" hidden>
-        <h3 class="history-title">Recent history</h3>
+        <h3 class="history-title"><button type="button" class="clear-history-button" onclick="clearHistory();">x</button> Recent history</h3>
         <table class="history-table">
             <tr>
                 <th>Created at</th>

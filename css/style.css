@@ -36,6 +36,10 @@ body {
     border-color: transparent;
 }
 
+input[type="text"]:focus {
+    outline: none;
+}
+
 .submit-button {
     font-family: 'Poppins', sans-serif;
     font-size: 16px;
@@ -47,6 +51,11 @@ body {
     border-color: transparent;
     background-color: rgb(236, 224, 46);
     margin-top: 0px;
+    outline: none;
+}
+
+.submit-button:focus {
+    background-color: rgb(243, 227, 6);
 }
 
 .errors {
@@ -120,4 +129,13 @@ body {
     color: white;
     font-size: 12px;
     margin-top: 10px;
+}
+
+.clear-history-button {
+    color: red;
+    background-color: transparent;
+    border-color: transparent;
+    outline: none;
+    font-size: 20px;
+    cursor: pointer;
 }
